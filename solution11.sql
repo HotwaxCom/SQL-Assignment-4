@@ -16,6 +16,8 @@ JOIN item_issuance ii
 GROUP BY oisg.facility_id, oh.order_id, oh.entry_date
 ORDER BY fulfillment_time DESC;
 
-Reason: 
+-- Since we had to find the average fulfillment time at each facility/store therefore we retrieve the details as required, take oh.entry_date as order date then for fulfillment time we find the difference in units of hours between the entry date of the order and the issued date time from the item issuance table, to find the average we took this difference per facility to find the average fulfillment time per facility.
+
+-- Execution Cost: 196,038.15 
 
 
