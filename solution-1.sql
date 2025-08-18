@@ -1,3 +1,15 @@
+1.Total Shipments in January 2022
+Business Problem:
+Logistics managers want to see how many shipments went out at the start of 2022. This helps assess shipping volumes and plan for post-holiday periods.
+
+Fields to Retrieve:
+
+SHIPMENT_ID
+SHIPMENT_DATE
+FACILITY_ID
+ORDER_ID
+
+
 select 
 	s.shipment_id, 
 	ss.status_date, 
