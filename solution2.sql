@@ -19,7 +19,7 @@ select
 	s.carrier_party_id,
 	s.status_id as shipment_status
 from shipment s
-join shipment_route_segment srs on srs.shipment_id = s.shipment_id;
+join shipment_route_segment srs on srs.shipment_id = s.shipment_id
 join shipment_status ss on ss.shipment_id = s.shipment_id
 	where ss.status_id = "SHIPMENT_SHIPPED";
 
@@ -28,7 +28,7 @@ join shipment_status ss on ss.shipment_id = s.shipment_id
 -- and shipment_id. Applied a join to shipment_route_segment to retrieve the tracking_id_number. Since we should be able to find
 -- the shipments at any stage so we did not put any constraint related to the status.
 
--- Execution Cost: 18,851.23
+-- Execution Cost: 84,240.41
 
 	
 
