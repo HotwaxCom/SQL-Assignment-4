@@ -1,14 +1,12 @@
-1.Total Shipments in January 2022
+1. Total Shipments in January 2022
 Business Problem:
 Logistics managers want to see how many shipments went out at the start of 2022. This helps assess shipping volumes and plan for post-holiday periods.
 
 Fields to Retrieve:
-
 SHIPMENT_ID
 SHIPMENT_DATE
 FACILITY_ID
 ORDER_ID
-
 
 select 
 	s.shipment_id, 
@@ -17,7 +15,7 @@ select
 	s.primary_order_id as order_id  
 from shipment s 
 join shipment_status ss on ss.shipment_id = s.shipment_id 
-where ss.status_id = "SHIPMENT_SHIPPED" and ss.status_date between "2022-01-01" and "2022-01-31" 
+where ss.status_id = "SHIPMENT_SHIPPED" and date(ss.status_date) between "2022-01-01" and "2022-01-31" 
 order by ss.status_date;
 
 -- Since shipments that came out in 2022 were asked so I first took shipment_status as "shipment_shipped"
