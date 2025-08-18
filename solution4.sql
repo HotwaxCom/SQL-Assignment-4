@@ -1,6 +1,18 @@
+4. Brokered but Not Shipped Orders
+Business Problem:
+Merchandising teams need to track orders that have been brokered (allocated to a facility) but not shipped. They also want to know how long it has been since the order was brokered.
+
+Fields to Retrieve:
+
+ORDER_ID
+BROKERED_DATE
+BROKERED_FACILITY_ID
+SHIPMENT_STATUS
+TIME_SINCE_BROKERING
+
 select 
 	oisgir.order_id,
-	oisgir.created_datetime as brokered_date,
+	oisgir.reserved_datetime as brokered_date,
 	ii.facility_id as brokered_facility_id,
 	datediff(curdate(), oisgir.created_datetime) as time_since_brokering
 	from order_item_ship_grp_inv_res oisgir
