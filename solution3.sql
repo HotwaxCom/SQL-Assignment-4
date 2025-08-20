@@ -11,9 +11,8 @@ select
 	monthname(ss.status_date) as month,
 	count(s.shipment_id)/count(distinct(s.origin_facility_id)) as average_shipments
 from shipment s
-join shipment_status ss on ss.shipment_id = ss.shipment_id
-where ss.status_id = "SHIPMENT_SHIPPED"
-and date(ss.status_date) between "2022-01-01" and "2022-03-31"
+join shipment_status ss on ss.shipment_id = ss.shipment_id and ss.status_id = "SHIPMENT_SHIPPED"
+where date(ss.status_date) between "2022-01-01" and "2022-03-31"
 group by month;
 
 -- We were required to find out average shipments per month till march, so for retrieving month I used the 
