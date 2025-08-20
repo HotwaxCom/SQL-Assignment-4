@@ -1,3 +1,16 @@
+11. How Long It Takes Facilities (Stores) to Fulfill Orders
+Business Problem:
+Management needs to measure the average fulfillment time (order creation to shipment or pick-up) at each store/facility.
+
+Fields to Retrieve:
+
+FACILITY_ID
+ORDER_ID
+ORDER_DATE
+SHIPMENT_DATE
+FULFILLMENT_TIME
+AVERAGE_FULFILLMENT_TIME
+
 SELECT 
     oisg.facility_id AS facility_id, 
     oh.order_id,
