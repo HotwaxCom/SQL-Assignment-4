@@ -20,8 +20,7 @@ select
 	ss.status_date as shipment_date
 from order_shipment os
 join order_item_ship_group oisg on os.order_id = oisg.order_id
-join shipment_status ss on ss.shipment_id = os.shipment_id
-where ss.status_id = "SHIPMENT_SHIPPED"
+join shipment_status ss on ss.shipment_id = os.shipment_id and ss.status_id = "SHIPMENT_SHIPPED"
 group by os.order_id, os.ship_group_seq_id, os.shipment_id, oisg.facility_id;
 
 -- We were to find out multi item orders fulfilled in one shipment, so for this we start by fetching the basic
