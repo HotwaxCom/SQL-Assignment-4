@@ -18,8 +18,8 @@ select
 	from order_item_ship_grp_inv_res oisgir
 join inventory_item ii on oisgir.inventory_item_id = ii.inventory_item_id
 join order_shipment os on os.order_id = oisgir.order_id
-join shipment_status ss on ss.shipment_id = os.shipment_id 
-where ss.status_id != "SHIPMENT_SHIPPED" or ss.status_id = "SHIPMENT_CANCELLED";
+join shipment_status ss on ss.shipment_id = os.shipment_id and 
+	ss.status_id != "SHIPMENT_SHIPPED" or ss.status_id = "SHIPMENT_CANCELLED";
 	
 -- as soon as the item is brokered a ship group is made for it and so we look into the order item ship grp inv res
 -- and take the order_id and brokered date from there, then a facility for the same is mentioned in the inventory item table 
