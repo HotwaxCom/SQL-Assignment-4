@@ -1,3 +1,16 @@
+8. Shipping Refunds (Last Month)
+Business Problem:
+The finance department needs to confirm the total value of shipping refunds processed last month to measure potential overages or carrier-related service issues.
+
+Fields to Retrieve:
+
+RETURN_ADJUSTMENT_ID
+ORDER_ID
+REFUND_AMOUNT
+REFUND_REASON_CODE
+REFUND_DATE
+CUSTOMER_ID
+
 select
 	ra.return_adjustment_id,
 	ri.order_id,
@@ -8,15 +21,12 @@ select
 	rh.from_party_id as customer_id
 from return_header rh
 join return_adjustment ra
-	on rh.return_id = ra.return_id
+	on rh.return_id = ra.return_id and ra.return_adjustment_type_id = "RET_SHIPPING_ADJ"
 join return_item ri
 	on ri.return_id = rh.return_id
 join return_status rs
-	on rs.return_id = rh.return_id
-	where rs.status_id = "RETURN_COMPLETED"
-	and rs.status_datetime between "2024-07-01" and "2024-07-31"
-	and ra.return_adjustment_type_id = "RET_SHIPPING_ADJ";
-
+	on rs.return_id = rh.return_id and rs.status_id = "RETURN_COMPLETED"
+	where date(rs.status_datetime) between "2024-07-01" and "2024-07-31";
 
 -- Only the returns completed have to be taken into account and so the status was "return_completed", also
 -- a date filter is applied to get the return detail from the previous month, rest retrived and applied join
