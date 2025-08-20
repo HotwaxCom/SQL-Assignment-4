@@ -1,3 +1,17 @@
+6. Orders Shipped from Stores (25 Days Before New Year)
+Business Problem:
+Retailers often run holiday promos in late December and need visibility into orders shipped from stores (as opposed to warehouses) for the final 25 days of the year.
+
+Fields to Retrieve:
+
+ORDER_ID
+SHIPMENT_ID
+FACILITY_ID (store ID)
+SHIPMENT_DATE
+ORDER_DATE
+TOTAL_ITEMS
+CUSTOMER_STATE
+
 select
 	oh.order_id,
 	os.shipment_id,
@@ -21,8 +35,8 @@ join facility f
 	on f.facility_id = oisg.facility_id
 where 	
 	ss.status_id = "SHIPMENT_SHIPPED"
-	and ss.status_date between '2024-12-06' and '2024-12-31'
-	and facility_type_id like '%STORE'
+	and date(ss.status_date) between '2024-12-06' and '2024-12-31'
+	and facility_type_id in ('OUTLET_STORE','RETAIL_STORE')
 group by oh.order_id, os.shipment_id, oisg.facility_id, ss.status_date, oh.order_date;
 
 -- started from the table order_header to get order_id and then applied joins as required, since only
