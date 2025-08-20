@@ -26,17 +26,15 @@ join order_shipment os
 join order_item_ship_group oisg
 	on oisg.order_id = os.order_id
 join shipment_status ss
-	on ss.shipment_id = os.shipment_id
+	on ss.shipment_id = os.shipment_id and ss.status_id = "SHIPMENT_SHIPPED"
 join order_contact_mech ocm 
 	on ocm.order_id = oh.order_id 
 join postal_address pa 
 	on pa.contact_mech_id = ocm.contact_mech_id
 join facility f
-	on f.facility_id = oisg.facility_id
+	on f.facility_id = oisg.facility_id and facility_type_id in ('OUTLET_STORE','RETAIL_STORE')
 where 	
-	ss.status_id = "SHIPMENT_SHIPPED"
 	and date(ss.status_date) between '2024-12-06' and '2024-12-31'
-	and facility_type_id in ('OUTLET_STORE','RETAIL_STORE')
 group by oh.order_id, os.shipment_id, oisg.facility_id, ss.status_date, oh.order_date;
 
 -- started from the table order_header to get order_id and then applied joins as required, since only
