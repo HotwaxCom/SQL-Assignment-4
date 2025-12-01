@@ -130,4 +130,18 @@
 | Diff            | [Link to diff](https://github.com/hotwax/hotwax-oms/compare/v7.2.19...v7.2.20) 
 | Changelog       | [Link to changelog](https://github.com/hotwax/hotwax-oms/releases/tag/v7.2.20)                                       |
 
+### Tag - v7.3.4 (13th November 2025)
+
+| Information     | Value                                                                                                                |
+| --------------- | -------------------------------------------------------------------------------------------------------------------  |
+| Release Version | v7.3.4                                                                                                              |
+| Release Type    | Hotfix                                                                                                               |
+| Image Tag       | v7.3.4                                                                                                              |
+| Image URL       | `289432782788.dkr.ecr.us-east-1.amazonaws.com/omscoreimage:omscoreimage-latest-v7.3.4`                              |
+| Diff            | [Link to diff](https://github.com/hotwax/hotwax-oms/compare/v7.3.3...v7.3.4) 
+| Changelog       | [Link to changelog](https://github.com/hotwax/hotwax-oms/releases/tag/v7.3.4)                                       |
+
+
+
+
 
